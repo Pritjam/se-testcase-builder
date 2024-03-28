@@ -1,0 +1,125 @@
+
+reverse_long.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <rev_ulong_dword_jt>:
+   0:	aa0003e2 	mov	x2, x0
+   4:	d2800203 	mov	x3, #0x10                  	// #16
+   8:	d2800000 	mov	x0, #0x0                   	// #0
+   c:	d2800167 	mov	x7, #0xb                   	// #11
+  10:	d28000a6 	mov	x6, #0x5                   	// #5
+  14:	d28001a5 	mov	x5, #0xd                   	// #13
+  18:	d2800144 	mov	x4, #0xa                   	// #10
+  1c:	1400000c 	b	4c <rev_ulong_dword_jt+0x4c>
+  20:	f100103f 	cmp	x1, #0x4
+  24:	54000820 	b.eq	128 <rev_ulong_dword_jt+0x128>  // b.none
+  28:	540003c9 	b.ls	a0 <rev_ulong_dword_jt+0xa0>  // b.plast
+  2c:	f100183f 	cmp	x1, #0x6
+  30:	54000780 	b.eq	120 <rev_ulong_dword_jt+0x120>  // b.none
+  34:	f1001c3f 	cmp	x1, #0x7
+  38:	540002c1 	b.ne	90 <rev_ulong_dword_jt+0x90>  // b.any
+  3c:	b27f0800 	orr	x0, x0, #0xe
+  40:	d344fc42 	lsr	x2, x2, #4
+  44:	f1000463 	subs	x3, x3, #0x1
+  48:	54000220 	b.eq	8c <rev_ulong_dword_jt+0x8c>  // b.none
+  4c:	92400c41 	and	x1, x2, #0xf
+  50:	d37cec00 	lsl	x0, x0, #4
+  54:	f100203f 	cmp	x1, #0x8
+  58:	540006c0 	b.eq	130 <rev_ulong_dword_jt+0x130>  // b.none
+  5c:	54fffe29 	b.ls	20 <rev_ulong_dword_jt+0x20>  // b.plast
+  60:	f100303f 	cmp	x1, #0xc
+  64:	540005a0 	b.eq	118 <rev_ulong_dword_jt+0x118>  // b.none
+  68:	54000309 	b.ls	c8 <rev_ulong_dword_jt+0xc8>  // b.plast
+  6c:	f100383f 	cmp	x1, #0xe
+  70:	54000500 	b.eq	110 <rev_ulong_dword_jt+0x110>  // b.none
+  74:	f1003c3f 	cmp	x1, #0xf
+  78:	54000201 	b.ne	b8 <rev_ulong_dword_jt+0xb8>  // b.any
+  7c:	b2400c00 	orr	x0, x0, #0xf
+  80:	d344fc42 	lsr	x2, x2, #4
+  84:	f1000463 	subs	x3, x3, #0x1
+  88:	54fffe21 	b.ne	4c <rev_ulong_dword_jt+0x4c>  // b.any
+  8c:	d65f03c0 	ret
+  90:	f100143f 	cmp	x1, #0x5
+  94:	54fffd61 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
+  98:	aa040000 	orr	x0, x0, x4
+  9c:	17ffffe9 	b	40 <rev_ulong_dword_jt+0x40>
+  a0:	f100083f 	cmp	x1, #0x2
+  a4:	540002e0 	b.eq	100 <rev_ulong_dword_jt+0x100>  // b.none
+  a8:	f1000c3f 	cmp	x1, #0x3
+  ac:	540001a1 	b.ne	e0 <rev_ulong_dword_jt+0xe0>  // b.any
+  b0:	b27e0400 	orr	x0, x0, #0xc
+  b4:	17ffffe3 	b	40 <rev_ulong_dword_jt+0x40>
+  b8:	f100343f 	cmp	x1, #0xd
+  bc:	54fffc21 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
+  c0:	aa070000 	orr	x0, x0, x7
+  c4:	17ffffdf 	b	40 <rev_ulong_dword_jt+0x40>
+  c8:	f100283f 	cmp	x1, #0xa
+  cc:	540001e0 	b.eq	108 <rev_ulong_dword_jt+0x108>  // b.none
+  d0:	f1002c3f 	cmp	x1, #0xb
+  d4:	540000e1 	b.ne	f0 <rev_ulong_dword_jt+0xf0>  // b.any
+  d8:	aa050000 	orr	x0, x0, x5
+  dc:	17ffffd9 	b	40 <rev_ulong_dword_jt+0x40>
+  e0:	f100043f 	cmp	x1, #0x1
+  e4:	54fffae1 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
+  e8:	b27d0000 	orr	x0, x0, #0x8
+  ec:	17ffffd5 	b	40 <rev_ulong_dword_jt+0x40>
+  f0:	f100243f 	cmp	x1, #0x9
+  f4:	54fffa61 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
+  f8:	aa010000 	orr	x0, x0, x1
+  fc:	17ffffd1 	b	40 <rev_ulong_dword_jt+0x40>
+ 100:	b27e0000 	orr	x0, x0, #0x4
+ 104:	17ffffcf 	b	40 <rev_ulong_dword_jt+0x40>
+ 108:	aa060000 	orr	x0, x0, x6
+ 10c:	17ffffcd 	b	40 <rev_ulong_dword_jt+0x40>
+ 110:	b2400800 	orr	x0, x0, #0x7
+ 114:	17ffffcb 	b	40 <rev_ulong_dword_jt+0x40>
+ 118:	b2400400 	orr	x0, x0, #0x3
+ 11c:	17ffffc9 	b	40 <rev_ulong_dword_jt+0x40>
+ 120:	b27f0400 	orr	x0, x0, #0x6
+ 124:	17ffffc7 	b	40 <rev_ulong_dword_jt+0x40>
+ 128:	b27f0000 	orr	x0, x0, #0x2
+ 12c:	17ffffc5 	b	40 <rev_ulong_dword_jt+0x40>
+ 130:	b2400000 	orr	x0, x0, #0x1
+ 134:	17ffffc3 	b	40 <rev_ulong_dword_jt+0x40>
+ 138:	d503201f 	nop
+ 13c:	d503201f 	nop
+
+0000000000000140 <start>:
+ 140:	d2800000 	mov	x0, #0x0                   	// #0
+ 144:	d65f03c0 	ret
+
+Disassembly of section .comment:
+
+0000000000000000 <.comment>:
+   0:	43434700 	.inst	0x43434700 ; undefined
+   4:	5528203a 	.inst	0x5528203a ; undefined
+   8:	746e7562 	.inst	0x746e7562 ; undefined
+   c:	31312075 	adds	w21, w3, #0xc48
+  10:	302e342e 	adr	x14, 5c695 <start+0x5c555>
+  14:	6275312d 	.inst	0x6275312d ; undefined
+  18:	75746e75 	.inst	0x75746e75 ; undefined
+  1c:	32327e31 	.inst	0x32327e31 ; undefined
+  20:	2934302e 	stp	w14, w12, [x1, #-96]
+  24:	2e313120 	usubw	v0.8h, v9.8h, v17.8b
+  28:	00302e34 	.inst	0x00302e34 ; NYI
+
+Disassembly of section .eh_frame:
+
+0000000000000000 <.eh_frame>:
+   0:	00000010 	udf	#16
+   4:	00000000 	udf	#0
+   8:	00527a01 	.inst	0x00527a01 ; undefined
+   c:	011e7804 	.inst	0x011e7804 ; undefined
+  10:	001f0c1b 	.inst	0x001f0c1b ; undefined
+  14:	00000010 	udf	#16
+  18:	00000018 	udf	#24
+  1c:	00000000 	udf	#0
+  20:	00000138 	udf	#312
+  24:	00000000 	udf	#0
+  28:	00000014 	udf	#20
+  2c:	0000002c 	udf	#44
+  30:	00000000 	udf	#0
+  34:	00000008 	udf	#8
+	...
