@@ -1,0 +1,11 @@
+
+template.o:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000000000000 <start>:
+   0:	d28008a0 	mov	x0, #0x45                  	// #69
+   4:	aa3f03e1 	mvn	x1, xzr
+   8:	f8000020 	stur	x0, [x1]
+   c:	d65f03c0 	ret

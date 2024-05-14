@@ -10,4 +10,5 @@ On Mac, you're on your own :)
 
 ## Usage
 
-This is a very simple build system to generate testcases. Type the testcase in `test.s`. Then run `make` to generate the object file, ELF, and executable. Then run `rename.sh <testcase name>` to create a folder called `<testcase name>`, copy the build fruit to that folder, and rename the build fruit to that name.
+This is a very simple build system to generate testcases. Type the testcase in `template.s`. Then run `make` to generate the object file, ELF, and executable. Then run `rename.sh <testcase name>` to create a folder called `<testcase name>`, copy the build fruit to that folder, and rename the build fruit to that name.
+

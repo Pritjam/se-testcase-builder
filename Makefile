@@ -6,11 +6,11 @@ OBJDUMP = aarch64-linux-gnu-objdump
 all: clean build objdump
 
 build:
-	$(GCC) -e start -nostdlib -nostdinc -static test.s -o test
+	$(GCC) -e start -nostdlib -nostdinc -static template.s -o template
 
 objdump:
-	$(GCC) -O3 -e start -nostdlib -nostdinc -static test.s -c
-	$(OBJDUMP) -D test.o > test.od
+	$(GCC) -O3 -e start -nostdlib -nostdinc -static template.s -c
+	$(OBJDUMP) -D template.o > template.od
 
 clean: 
-	rm -f test.od test test.o
+	rm -f template.od template template.o
