@@ -10,5 +10,7 @@ On Mac, you're on your own :)
 
 ## Usage
 
-This is a very simple build system to generate testcases. Type the testcase in `template.s`. Then run `make` to generate the object file, ELF, and executable. Then run `rename.sh <testcase name>` to create a folder called `<testcase name>`, copy the build fruit to that folder, and rename the build fruit to that name.
+This is a very simple build system to generate testcases. Type the testcase in some file with a `.s` extension. Then run `./build.sh FILENAME` where `FILENAME` is the name of the test file (without the `.s` extension). This will create a directory called `FILENAME` with the executable, object dump, and source ASM file.
+
+A file called `template.s` is also provided as an example. Several testcases are found in the `testcases` directory. This example writes the number `69` to the special memory address `0xFFFFFFFFFFFFFFFF`, which the SE Lab system maps to a special MMIO print address.
 
