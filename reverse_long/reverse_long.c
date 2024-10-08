@@ -1,4 +1,3 @@
-static unsigned long inputs[] = {0xDEADBEEFABCD1234, 0x8000000100042069, 0x00042069FADEDB0B, 0xDEADF00D0DEADA55};
 
 unsigned long rev_ulong_dword_jt(unsigned long input) {
   unsigned long lut = 0xF7B3D591E6A2C480;
@@ -26,15 +25,7 @@ unsigned long rev_ulong_dword_jt(unsigned long input) {
     }
     input >>= 4;
   }
-
   return r;
-}
-
-unsigned long start() {
-  for(unsigned long i = 0; i < 4; i++) {
-    rev_ulong_dword_jt(inputs[i]);
-  }
-  return 0;
 }
 
 

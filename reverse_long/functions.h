@@ -1,0 +1,1 @@
+unsigned long rev_ulong_dword_jt(unsigned long);

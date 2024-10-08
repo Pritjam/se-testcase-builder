@@ -1,133 +1,132 @@
-	.arch armv8-a
-	.file	"reverse_long.c"
-	.text
-	.align	2
-	.p2align 4,,11
 	.global	rev_ulong_dword_jt
-	.type	rev_ulong_dword_jt, %function
 rev_ulong_dword_jt:
-.LFB0:
-	.cfi_startproc
-	mov	x2, x0
-	mov	x3, 16
-	mov	x0, 0
-	mov	x7, 11
-	mov	x6, 5
-	mov	x5, 13
-	mov	x4, 10
-	b	.L21
-	.p2align 2,,3
-.L27:
-	cmp	x1, 4
-	beq	.L4
-	bls	.L24
-	cmp	x1, 6
-	beq	.L10
-	cmp	x1, 7
-	bne	.L25
-	orr	x0, x0, 14
-	.p2align 3,,7
-.L9:
-	lsr	x2, x2, 4
-	subs	x3, x3, #1
-	beq	.L26
-.L21:
-	and	x1, x2, 15
-	lsl	x0, x0, 4
-	cmp	x1, 8
-	beq	.L2
-	bls	.L27
-	cmp	x1, 12
-	beq	.L13
-	bls	.L28
-	cmp	x1, 14
-	beq	.L18
-	cmp	x1, 15
-	bne	.L29
-	orr	x0, x0, 15
-	lsr	x2, x2, 4
-	subs	x3, x3, #1
-	bne	.L21
-.L26:
+
+// register allocation:
+// x0 = input (and later on, the result, persistent)
+// x1 = r (the result, persistent)
+// x2 = lut (lookup table, persistent)
+// x3 = i (loop counter, persistent)
+// x4 = index (temporary)
+// x5 = jump address to handle switch (temporary)
+// x6 = AND mask (persistent)
+
+// load the magic number, the LUT, into x2
+	mov		x2, 50304
+	movk	x2, 0xe6a2, lsl 16
+	movk	x2, 0xd591, lsl 32
+	movk	x2, 0xf7b3, lsl 48
+
+// load AND mask into x6
+	movz	x6, 15
+
+// initialize r and i to 0
+	eor x3, x3, x3 // i
+	eor x1, x1, x1 // r
+	b	.loop_guard
+
+
+.loop_body:
+// loop body:
+// left shift r by 4
+	lsl	x1, x1, 4
+// AND input with 0xF to get an index
+	and	x4, x0, x6
+// get base address of JT into x5
+	adrp	x5, .jump_table
+	add	x5, x5, :lo12:.jump_table
+// increment this offset to get the address of the JT entry
+// entry_addr = x5 + 4 * x4
+	lsl x4, x4, 3
+	adds x5, x5, x4
+// now x5 stores the address of the JT entry that has our jump vector
+// load this vector, then jump to it
+	ldur x5, [x5]
+	br	x5
+.Lrtx5:
+	.section	.rodata
+	.align	0
+	.align	2
+.jump_table:
+	.dword	(.case_0)
+	.dword	(.case_1)
+	.dword	(.case_2)
+	.dword	(.case_3)
+	.dword	(.case_4)
+	.dword	(.case_5)
+	.dword	(.case_6)
+	.dword	(.case_7)
+	.dword	(.case_8)
+	.dword	(.case_9)
+	.dword	(.case_10)
+	.dword	(.case_11)
+	.dword	(.case_12)
+	.dword	(.case_13)
+	.dword	(.case_14)
+	.dword	(.case_15)
+	.text
+.case_0:
+	b	.post_switch
+.case_1:
+	lsr	x4, x2, 4
+	b	.post_switch
+.case_2:
+	lsr	x4, x2, 8
+	b	.post_switch
+.case_3:
+	lsr	x4, x2, 12
+	b	.post_switch
+.case_4:
+	lsr	x4, x2, 16
+	b	.post_switch
+.case_5:
+	lsr	x4, x2, 20
+	b	.post_switch
+.case_6:
+	lsr	x4, x2, 24
+	b	.post_switch
+.case_7:
+	lsr	x4, x2, 28
+	b	.post_switch
+.case_8:
+	lsr	x4, x2, 32
+	b	.post_switch
+.case_9:
+	lsr	x4, x2, 36
+	b	.post_switch
+.case_10:
+	lsr	x4, x2, 40
+	b	.post_switch
+.case_11:
+	lsr	x4, x2, 44
+	b	.post_switch
+.case_12:
+	lsr	x4, x2, 48
+	b	.post_switch
+.case_13:
+	lsr	x4, x2, 52
+	b	.post_switch
+.case_14:
+	lsr	x4, x2, 56
+	b	.post_switch
+.case_15:
+	lsr	x4, x2, 60
+	b 	.post_switch
+.post_switch:
+	and x4, x4, x6
+	orr x1, x1, x4
+// shift input right by 4
+	lsr	x0, x0, 4
+// increment i
+	add	x3, x3, 1
+.loop_guard:
+// load i, compare it to 15
+	cmp	x3, x6
+// if i is LOWER OR SAME than 15, execute the loop body
+	bls	.loop_body
+// otherwise load r in x0 (return value) and return
+	adds x0, x1, xzr
 	ret
-.L25:
-	cmp	x1, 5
-	bne	.L9
-	orr	x0, x0, x4
-	b	.L9
-	.p2align 2,,3
-.L24:
-	cmp	x1, 2
-	beq	.L6
-	cmp	x1, 3
-	bne	.L30
-	orr	x0, x0, 12
-	b	.L9
-.L29:
-	cmp	x1, 13
-	bne	.L9
-	orr	x0, x0, x7
-	b	.L9
-	.p2align 2,,3
-.L28:
-	cmp	x1, 10
-	beq	.L15
-	cmp	x1, 11
-	bne	.L31
-	orr	x0, x0, x5
-	b	.L9
-.L30:
-	cmp	x1, 1
-	bne	.L9
-	orr	x0, x0, 8
-	b	.L9
-.L31:
-	cmp	x1, 9
-	bne	.L9
-	orr	x0, x0, x1
-	b	.L9
-	.p2align 2,,3
-.L6:
-	orr	x0, x0, 4
-	b	.L9
-	.p2align 2,,3
-.L15:
-	orr	x0, x0, x6
-	b	.L9
-	.p2align 2,,3
-.L18:
-	orr	x0, x0, 7
-	b	.L9
-	.p2align 2,,3
-.L13:
-	orr	x0, x0, 3
-	b	.L9
-	.p2align 2,,3
-.L10:
-	orr	x0, x0, 6
-	b	.L9
-	.p2align 2,,3
-.L4:
-	orr	x0, x0, 2
-	b	.L9
-	.p2align 2,,3
-.L2:
-	orr	x0, x0, 1
-	b	.L9
-	.cfi_endproc
 .LFE0:
 	.size	rev_ulong_dword_jt, .-rev_ulong_dword_jt
-	.align	2
-	.p2align 4,,11
-	.global	start
-	.type	start, %function
-start:
-.LFB1:
-	.cfi_startproc
-	mov	x0, 0
-	ret
-	.cfi_endproc
-.LFE1:
-	.size	start, .-start
-	.ident	"GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+	.ident	"GCC: (Ubuntu 13.2.0-23ubuntu4) 13.2.0"
 	.section	.note.GNU-stack,"",@progbits

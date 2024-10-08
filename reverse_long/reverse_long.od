@@ -5,90 +5,106 @@ reverse_long.o:     file format elf64-littleaarch64
 Disassembly of section .text:
 
 0000000000000000 <rev_ulong_dword_jt>:
-   0:	aa0003e2 	mov	x2, x0
-   4:	d2800203 	mov	x3, #0x10                  	// #16
-   8:	d2800000 	mov	x0, #0x0                   	// #0
-   c:	d2800167 	mov	x7, #0xb                   	// #11
-  10:	d28000a6 	mov	x6, #0x5                   	// #5
-  14:	d28001a5 	mov	x5, #0xd                   	// #13
-  18:	d2800144 	mov	x4, #0xa                   	// #10
-  1c:	1400000c 	b	4c <rev_ulong_dword_jt+0x4c>
-  20:	f100103f 	cmp	x1, #0x4
-  24:	54000820 	b.eq	128 <rev_ulong_dword_jt+0x128>  // b.none
-  28:	540003c9 	b.ls	a0 <rev_ulong_dword_jt+0xa0>  // b.plast
-  2c:	f100183f 	cmp	x1, #0x6
-  30:	54000780 	b.eq	120 <rev_ulong_dword_jt+0x120>  // b.none
-  34:	f1001c3f 	cmp	x1, #0x7
-  38:	540002c1 	b.ne	90 <rev_ulong_dword_jt+0x90>  // b.any
-  3c:	b27f0800 	orr	x0, x0, #0xe
-  40:	d344fc42 	lsr	x2, x2, #4
-  44:	f1000463 	subs	x3, x3, #0x1
-  48:	54000220 	b.eq	8c <rev_ulong_dword_jt+0x8c>  // b.none
-  4c:	92400c41 	and	x1, x2, #0xf
-  50:	d37cec00 	lsl	x0, x0, #4
-  54:	f100203f 	cmp	x1, #0x8
-  58:	540006c0 	b.eq	130 <rev_ulong_dword_jt+0x130>  // b.none
-  5c:	54fffe29 	b.ls	20 <rev_ulong_dword_jt+0x20>  // b.plast
-  60:	f100303f 	cmp	x1, #0xc
-  64:	540005a0 	b.eq	118 <rev_ulong_dword_jt+0x118>  // b.none
-  68:	54000309 	b.ls	c8 <rev_ulong_dword_jt+0xc8>  // b.plast
-  6c:	f100383f 	cmp	x1, #0xe
-  70:	54000500 	b.eq	110 <rev_ulong_dword_jt+0x110>  // b.none
-  74:	f1003c3f 	cmp	x1, #0xf
-  78:	54000201 	b.ne	b8 <rev_ulong_dword_jt+0xb8>  // b.any
-  7c:	b2400c00 	orr	x0, x0, #0xf
-  80:	d344fc42 	lsr	x2, x2, #4
-  84:	f1000463 	subs	x3, x3, #0x1
-  88:	54fffe21 	b.ne	4c <rev_ulong_dword_jt+0x4c>  // b.any
-  8c:	d65f03c0 	ret
-  90:	f100143f 	cmp	x1, #0x5
-  94:	54fffd61 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
-  98:	aa040000 	orr	x0, x0, x4
-  9c:	17ffffe9 	b	40 <rev_ulong_dword_jt+0x40>
-  a0:	f100083f 	cmp	x1, #0x2
-  a4:	540002e0 	b.eq	100 <rev_ulong_dword_jt+0x100>  // b.none
-  a8:	f1000c3f 	cmp	x1, #0x3
-  ac:	540001a1 	b.ne	e0 <rev_ulong_dword_jt+0xe0>  // b.any
-  b0:	b27e0400 	orr	x0, x0, #0xc
-  b4:	17ffffe3 	b	40 <rev_ulong_dword_jt+0x40>
-  b8:	f100343f 	cmp	x1, #0xd
-  bc:	54fffc21 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
-  c0:	aa070000 	orr	x0, x0, x7
-  c4:	17ffffdf 	b	40 <rev_ulong_dword_jt+0x40>
-  c8:	f100283f 	cmp	x1, #0xa
-  cc:	540001e0 	b.eq	108 <rev_ulong_dword_jt+0x108>  // b.none
-  d0:	f1002c3f 	cmp	x1, #0xb
-  d4:	540000e1 	b.ne	f0 <rev_ulong_dword_jt+0xf0>  // b.any
-  d8:	aa050000 	orr	x0, x0, x5
-  dc:	17ffffd9 	b	40 <rev_ulong_dword_jt+0x40>
-  e0:	f100043f 	cmp	x1, #0x1
-  e4:	54fffae1 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
-  e8:	b27d0000 	orr	x0, x0, #0x8
-  ec:	17ffffd5 	b	40 <rev_ulong_dword_jt+0x40>
-  f0:	f100243f 	cmp	x1, #0x9
-  f4:	54fffa61 	b.ne	40 <rev_ulong_dword_jt+0x40>  // b.any
-  f8:	aa010000 	orr	x0, x0, x1
-  fc:	17ffffd1 	b	40 <rev_ulong_dword_jt+0x40>
- 100:	b27e0000 	orr	x0, x0, #0x4
- 104:	17ffffcf 	b	40 <rev_ulong_dword_jt+0x40>
- 108:	aa060000 	orr	x0, x0, x6
- 10c:	17ffffcd 	b	40 <rev_ulong_dword_jt+0x40>
- 110:	b2400800 	orr	x0, x0, #0x7
- 114:	17ffffcb 	b	40 <rev_ulong_dword_jt+0x40>
- 118:	b2400400 	orr	x0, x0, #0x3
- 11c:	17ffffc9 	b	40 <rev_ulong_dword_jt+0x40>
- 120:	b27f0400 	orr	x0, x0, #0x6
- 124:	17ffffc7 	b	40 <rev_ulong_dword_jt+0x40>
- 128:	b27f0000 	orr	x0, x0, #0x2
- 12c:	17ffffc5 	b	40 <rev_ulong_dword_jt+0x40>
- 130:	b2400000 	orr	x0, x0, #0x1
- 134:	17ffffc3 	b	40 <rev_ulong_dword_jt+0x40>
- 138:	d503201f 	nop
- 13c:	d503201f 	nop
+   0:	d100c3ff 	sub	sp, sp, #0x30
+   4:	d2989002 	mov	x2, #0xc480                	// #50304
+   8:	f2bcd442 	movk	x2, #0xe6a2, lsl #16
+   c:	f2dab222 	movk	x2, #0xd591, lsl #32
+  10:	f2fef662 	movk	x2, #0xf7b3, lsl #48
+  14:	d28001e6 	mov	x6, #0xf                   	// #15
+  18:	ca030063 	eor	x3, x3, x3
+  1c:	ca010021 	eor	x1, x1, x1
+  20:	1400002c 	b	d0 <.loop_guard>
 
-0000000000000140 <start>:
- 140:	d2800000 	mov	x0, #0x0                   	// #0
- 144:	d65f03c0 	ret
+0000000000000024 <.loop_body>:
+  24:	d37cec21 	lsl	x1, x1, #4
+  28:	8a060004 	and	x4, x0, x6
+  2c:	90000005 	adrp	x5, 0 <rev_ulong_dword_jt>
+  30:	910000a5 	add	x5, x5, #0x0
+  34:	d37df084 	lsl	x4, x4, #3
+  38:	ab0400a5 	adds	x5, x5, x4
+  3c:	f84000a5 	ldur	x5, [x5]
+  40:	d61f00a0 	br	x5
+
+0000000000000044 <.case_0>:
+  44:	1400001f 	b	c0 <.post_switch>
+
+0000000000000048 <.case_1>:
+  48:	d344fc44 	lsr	x4, x2, #4
+  4c:	1400001d 	b	c0 <.post_switch>
+
+0000000000000050 <.case_2>:
+  50:	d348fc44 	lsr	x4, x2, #8
+  54:	1400001b 	b	c0 <.post_switch>
+
+0000000000000058 <.case_3>:
+  58:	d34cfc44 	lsr	x4, x2, #12
+  5c:	14000019 	b	c0 <.post_switch>
+
+0000000000000060 <.case_4>:
+  60:	d350fc44 	lsr	x4, x2, #16
+  64:	14000017 	b	c0 <.post_switch>
+
+0000000000000068 <.case_5>:
+  68:	d354fc44 	lsr	x4, x2, #20
+  6c:	14000015 	b	c0 <.post_switch>
+
+0000000000000070 <.case_6>:
+  70:	d358fc44 	lsr	x4, x2, #24
+  74:	14000013 	b	c0 <.post_switch>
+
+0000000000000078 <.case_7>:
+  78:	d35cfc44 	lsr	x4, x2, #28
+  7c:	14000011 	b	c0 <.post_switch>
+
+0000000000000080 <.case_8>:
+  80:	d360fc44 	lsr	x4, x2, #32
+  84:	1400000f 	b	c0 <.post_switch>
+
+0000000000000088 <.case_9>:
+  88:	d364fc44 	lsr	x4, x2, #36
+  8c:	1400000d 	b	c0 <.post_switch>
+
+0000000000000090 <.case_10>:
+  90:	d368fc44 	lsr	x4, x2, #40
+  94:	1400000b 	b	c0 <.post_switch>
+
+0000000000000098 <.case_11>:
+  98:	d36cfc44 	lsr	x4, x2, #44
+  9c:	14000009 	b	c0 <.post_switch>
+
+00000000000000a0 <.case_12>:
+  a0:	d370fc44 	lsr	x4, x2, #48
+  a4:	14000007 	b	c0 <.post_switch>
+
+00000000000000a8 <.case_13>:
+  a8:	d374fc44 	lsr	x4, x2, #52
+  ac:	14000005 	b	c0 <.post_switch>
+
+00000000000000b0 <.case_14>:
+  b0:	d378fc44 	lsr	x4, x2, #56
+  b4:	14000003 	b	c0 <.post_switch>
+
+00000000000000b8 <.case_15>:
+  b8:	d37cfc44 	lsr	x4, x2, #60
+  bc:	14000001 	b	c0 <.post_switch>
+
+00000000000000c0 <.post_switch>:
+  c0:	8a060084 	and	x4, x4, x6
+  c4:	aa040021 	orr	x1, x1, x4
+  c8:	d344fc00 	lsr	x0, x0, #4
+  cc:	91000463 	add	x3, x3, #0x1
+
+00000000000000d0 <.loop_guard>:
+  d0:	eb06007f 	cmp	x3, x6
+  d4:	54fffa89 	b.ls	24 <.loop_body>  // b.plast
+  d8:	ab1f0020 	adds	x0, x1, xzr
+  dc:	9100c3ff 	add	sp, sp, #0x30
+  e0:	d65f03c0 	ret
+
+Disassembly of section .rodata:
+
+0000000000000000 <.jump_table>:
+	...
 
 Disassembly of section .comment:
 
@@ -96,30 +112,11 @@ Disassembly of section .comment:
    0:	43434700 	.inst	0x43434700 ; undefined
    4:	5528203a 	.inst	0x5528203a ; undefined
    8:	746e7562 	.inst	0x746e7562 ; undefined
-   c:	31312075 	adds	w21, w3, #0xc48
-  10:	302e342e 	adr	x14, 5c695 <start+0x5c555>
-  14:	6275312d 	.inst	0x6275312d ; undefined
-  18:	75746e75 	.inst	0x75746e75 ; undefined
-  1c:	32327e31 	.inst	0x32327e31 ; undefined
-  20:	2934302e 	stp	w14, w12, [x1, #-96]
-  24:	2e313120 	usubw	v0.8h, v9.8h, v17.8b
-  28:	00302e34 	.inst	0x00302e34 ; NYI
+   c:	33312075 	.inst	0x33312075 ; undefined
+  10:	302e322e 	adr	x14, 5c655 <.loop_guard+0x5c585>
+  14:	7533322d 	.inst	0x7533322d ; undefined
+  18:	746e7562 	.inst	0x746e7562 ; undefined
+  1c:	20293475 	.inst	0x20293475 ; undefined
+  20:	322e3331 	orr	w17, w25, #0x7ffc0000
+  24:	Address 0x24 is out of bounds.
 
-Disassembly of section .eh_frame:
-
-0000000000000000 <.eh_frame>:
-   0:	00000010 	udf	#16
-   4:	00000000 	udf	#0
-   8:	00527a01 	.inst	0x00527a01 ; undefined
-   c:	011e7804 	.inst	0x011e7804 ; undefined
-  10:	001f0c1b 	.inst	0x001f0c1b ; undefined
-  14:	00000010 	udf	#16
-  18:	00000018 	udf	#24
-  1c:	00000000 	udf	#0
-  20:	00000138 	udf	#312
-  24:	00000000 	udf	#0
-  28:	00000014 	udf	#20
-  2c:	0000002c 	udf	#44
-  30:	00000000 	udf	#0
-  34:	00000008 	udf	#8
-	...
