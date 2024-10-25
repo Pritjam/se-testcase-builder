@@ -1,5 +1,5 @@
-	.global	rev_ulong_dword_jt
-rev_ulong_dword_jt:
+	.global	start
+start:
 
 // register allocation:
 // x0 = input (and later on, the result, persistent)
@@ -127,6 +127,6 @@ rev_ulong_dword_jt:
 	adds x0, x1, xzr
 	ret
 .LFE0:
-	.size	rev_ulong_dword_jt, .-rev_ulong_dword_jt
+	.size	start, .-start
 	.ident	"GCC: (Ubuntu 13.2.0-23ubuntu4) 13.2.0"
 	.section	.note.GNU-stack,"",@progbits

@@ -2,7 +2,7 @@
 
 ## Installing the cross-compiler
 
-On Ubuntu, run `sudo apt install gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu binutils-aarch64-linux-gnu-dbg build-essential` to install the needed components. This installs a cross compiler that can compile/assemble ARM64 code on your machine.
+On Ubuntu, run `sudo apt install gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu binutils-aarch64-linux-gnu-dbg build-essential gdb-multiarch qemu-user` to install the needed components. This installs a cross compiler that can compile/assemble ARM64 code on your machine.
 
 On Windows, first set up WSL (or some other virtualization system) so that you can use Ubuntu.
 
