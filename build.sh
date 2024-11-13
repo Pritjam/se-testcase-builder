@@ -8,6 +8,7 @@ fi
 GCC=aarch64-linux-gnu-gcc
 OBJDUMP=aarch64-linux-gnu-objdump
 SE_GCC_ARGS="-e start -nostdlib -nostdinc -static"
+rm -rf $1 $1.od
 
 python3 verify.py $1.s
 if [ $? -eq 1 ]; then
@@ -15,7 +16,6 @@ if [ $? -eq 1 ]; then
     exit 1
 fi
 
-rm -rf $1
 $GCC $SE_GCC_ARGS $1.s -c -o temp.o 
 $OBJDUMP -D temp.o > $1.od
 rm temp.o
